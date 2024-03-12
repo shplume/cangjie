@@ -7,11 +7,11 @@ import (
 
 var key = [8]byte{0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01}
 
-func HZK16(word [2]byte) {
+func HZK16(word []byte) []byte {
 	file, err := os.Open("font/HZK16")
 	if err != nil {
 		fmt.Println(err)
-		return
+		return nil
 	}
 
 	defer file.Close()
@@ -20,10 +20,12 @@ func HZK16(word [2]byte) {
 	buffer := make([]byte, 32)
 	if _, err := file.ReadAt(buffer, offset); err != nil {
 		fmt.Println(err)
-		return
+		return nil
 	}
 
 	display(buffer)
+
+	return buffer
 }
 
 func display(buffer []byte) {
