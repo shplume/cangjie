@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	var word = tools.UTF8ToGB2312("选课成功")
+	var word = tools.UTF8ToGB2312("回答错误")
 	if len(word) != 8 {
 		fmt.Println("word is invalid")
 
@@ -27,7 +27,7 @@ func main() {
 	for i := 0; i < len(dst); i++ {
 		fmt.Printf("0x%02x, ", dst[i])
 
-		if i%32 == 0 && i != 0 {
+		if (i+1)%16 == 0 {
 			fmt.Println()
 		}
 	}
