@@ -1,8 +1,12 @@
 package tools
 
 import (
+	"fmt"
+
 	"github.com/gogf/gf/v2/encoding/gcharset"
 )
+
+var key = [8]byte{0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01}
 
 func Transform(src []byte, dst []byte) {
 	for i := 0; i < 16; i++ {
@@ -24,4 +28,20 @@ func UTF8ToGB2312(text string) []byte {
 	}
 
 	return []byte(str)
+}
+
+func Display(buffer []byte) {
+	for k := 0; k < 16; k++ {
+		for j := 0; j < 2; j++ {
+			for i := 0; i < 8; i++ {
+				if buffer[k*2+j]&key[i] == 0x0 {
+					fmt.Printf("○ ")
+				} else {
+					fmt.Printf("● ")
+				}
+			}
+		}
+
+		fmt.Println()
+	}
 }

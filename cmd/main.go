@@ -3,21 +3,22 @@ package main
 import (
 	"fmt"
 
-	hzk16 "github.com/shplume/cangjie/HZK16"
-	tools "github.com/shplume/cangjie/tools"
+	"github.com/shplume/cangjie/handler"
+	"github.com/shplume/cangjie/tools"
 )
 
 func main() {
-	var word = tools.UTF8ToGB2312("回答错误")
-	if len(word) != 8 {
-		fmt.Println("word is invalid")
+	var word = tools.UTF8ToGB2312("请先语文")
 
-		return
+	for i := 0; i < 8; i++ {
+		fmt.Printf("0x%2x, ", word[i])
 	}
+
+	fmt.Println()
 
 	buffer := []byte{}
 	for i := 0; i < len(word); i += 2 {
-		buffer = append(buffer, hzk16.HZK16(word[i:i+2])...)
+		buffer = append(buffer, handler.SongTi(word[i:i+2])...)
 		fmt.Println()
 	}
 
