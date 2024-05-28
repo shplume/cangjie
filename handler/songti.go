@@ -11,7 +11,7 @@ func SongTi(word []byte) []byte {
 	}
 
 	offset := (area*192 + location) * 32
-	buffer := handler("font/songti", offset)
+	buffer := handler("font/siyuanheiti", offset)
 
 	return buffer
 }

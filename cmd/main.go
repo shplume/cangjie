@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	var word = tools.UTF8ToGB2312("请先语文")
+	var word = tools.UTF8ToGB2312("语文数学")
 
 	for i := 0; i < 8; i++ {
 		fmt.Printf("0x%2x, ", word[i])
